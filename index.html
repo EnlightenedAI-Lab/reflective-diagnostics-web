@@ -9,7 +9,7 @@
       --bg: #f7f4ee;
       --panel: #ffffff;
       --text: #111111;
-      --muted: rgba(17, 17, 17, 0.72);
+      --muted: rgba(17, 17, 17, 0.74);
       --muted-strong: rgba(17, 17, 17, 0.84);
       --border: #111111;
     }
@@ -45,16 +45,12 @@
       padding: 28px;
     }
 
-    .card.hero-card {
-      box-shadow: 8px 8px 0 rgba(0, 0, 0, 1);
-    }
-
     .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      padding: 18px 30px;
+      padding: 16px 28px;
       border-bottom: 1px solid var(--border);
       flex-wrap: wrap;
     }
@@ -62,7 +58,7 @@
     .caps {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.25em;
     }
 
     .btn {
@@ -81,35 +77,35 @@
     .btn:hover { transform: translateY(-2px); }
 
     .hero {
-      padding: 62px 30px 56px;
+      padding: 56px 34px 60px;
     }
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(68px, 8.5vw, 118px);
-      line-height: 0.93;
+      font-size: clamp(58px, 7vw, 94px);
+      line-height: 0.97;
       font-weight: 600;
-      max-width: 1180px;
-      letter-spacing: -0.03em;
+      max-width: 1080px;
+      letter-spacing: -0.035em;
     }
 
     .hero .sub {
-      margin-top: 38px;
-      font-size: clamp(24px, 2.2vw, 34px);
-      line-height: 1.34;
+      margin-top: 42px;
+      font-size: clamp(20px, 2vw, 29px);
+      line-height: 1.42;
       max-width: 980px;
     }
 
     .hero .desc {
       margin-top: 30px;
-      font-size: 20px;
-      line-height: 1.7;
+      font-size: 19px;
+      line-height: 1.72;
       color: var(--muted);
       max-width: 760px;
     }
 
     .stack {
-      margin-top: 34px;
+      margin-top: 36px;
       display: grid;
       gap: 28px;
     }
@@ -216,11 +212,20 @@
       }
 
       .topbar {
-        padding: 16px 20px;
+        padding: 14px 22px;
       }
 
       .hero {
-        padding: 42px 20px 38px;
+        padding: 38px 22px 40px;
+      }
+
+      .hero h1 {
+        font-size: clamp(52px, 12vw, 78px);
+      }
+
+      .hero .sub {
+        margin-top: 30px;
+        font-size: 22px;
       }
 
       .lead-xl {
@@ -239,7 +244,7 @@
 </head>
 <body>
   <div class="page">
-    <header class="panel hero-card">
+    <header class="panel">
       <div class="topbar">
         <div class="caps">EnlightenedAI Research Lab</div>
         <a class="btn" href="mailto:research@enlightedai.ai">Contact Us</a>

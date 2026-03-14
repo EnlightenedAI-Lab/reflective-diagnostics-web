@@ -1,298 +1,413 @@
-export default function ReflectiveDiagnosticsLandingPage() {
-  const questions = [
-    "Can we trust this model when the answer matters?",
-    "Does the model know when it may be wrong?",
-    "Which model performs best for my specific task?",
-  ];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reflective Diagnostics</title>
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --panel: #ffffff;
+      --text: #111111;
+      --muted: rgba(17, 17, 17, 0.75);
+      --muted-strong: rgba(17, 17, 17, 0.85);
+      --border: #111111;
+    }
 
-  const outputs = [
-    "A trust signal for model reliability",
-    "A task-specific model selection signal",
-    "A traceable JSON record",
-    "A built-in ground-truth benchmark",
-    "A reproducible evaluation framework",
-  ];
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-  const value = [
-    "Independent evaluation without requiring model internals",
-    "Structured datasets at scale for research and analysis",
-    "A flexible framework for testing new hypotheses across models and tasks",
-  ];
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
 
-  const applications = [
-    "Comparative evaluation of AI systems",
-    "Hypothesis testing across models and tasks",
-    "Reproducible evaluation studies",
-    "Internal model audits before deployment",
-  ];
+    .page {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 24px;
+    }
 
-  const comparison = [
-    {
-      type: "Training methods",
-      purpose: "Change model behavior",
-      rules: "No",
-      finalAnswer: "No",
-      evidence: "No",
-      failure: "No",
-    },
-    {
-      type: "Benchmarks",
-      purpose: "Score performance",
-      rules: "Partial",
-      finalAnswer: "Usually",
-      evidence: "Rarely",
-      failure: "Limited",
-    },
-    {
-      type: "Eval frameworks",
-      purpose: "Run eval workflows",
-      rules: "Mixed",
-      finalAnswer: "Depends",
-      evidence: "Partial",
-      failure: "Partial",
-    },
-    {
-      type: "Judge-based evaluators",
-      purpose: "Grade outputs",
-      rules: "No",
-      finalAnswer: "Usually",
-      evidence: "Limited",
-      failure: "Limited",
-    },
-    {
-      type: "Reflective Diagnostics",
-      purpose: "Audit reasoning reliability",
-      rules: "Yes",
-      finalAnswer: "No",
-      evidence: "Yes",
-      failure: "Yes",
-      highlight: true,
-    },
-  ];
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, 1);
+    }
 
-  return (
-    <div className="min-h-screen bg-[#f7f4ee] text-[#111111]">
-      <div className="mx-auto max-w-7xl px-6 py-8 md:px-10 lg:px-12">
-        <header className="border border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-          <div className="flex flex-col gap-4 border-b border-black px-5 py-4 sm:flex-row sm:items-center sm:justify-between md:px-8">
-            <div className="text-[11px] uppercase tracking-[0.25em]">EnlightenedAI Research Lab</div>
-            <div className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.22em]">
-              <a
-                href="mailto:research@enlightedai.ai"
-                className="border border-black px-3 py-2 transition hover:-translate-y-0.5"
-              >
-                Contact Us
-              </a>
-            </div>
-          </div>
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 1);
+      padding: 24px;
+    }
 
-          <div className="grid gap-10 px-5 py-8 md:grid-cols-[1.25fr_0.75fr] md:px-8 md:py-10">
-            <div>
-              <h1 className="max-w-4xl text-4xl font-semibold leading-tight md:text-6xl">
-                This tool does not use AI.
-              </h1>
-              <p className="mt-4 max-w-3xl text-lg leading-8 md:text-xl">
-                Your AI can sound trustworthy without actually being reliable. That puts your organization at risk.
-              </p>
-              <p className="mt-6 max-w-3xl text-sm leading-7 text-black/70 md:text-base">
-                <span className="font-semibold">Reflective Diagnostics</span> is a rule-based audit framework for deployed AI systems.
-              </p>
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href="#overview"
-                  className="rounded-none border border-black bg-black px-5 py-3 text-sm uppercase tracking-[0.2em] text-white transition hover:-translate-y-0.5"
-                >
-                  View Overview
-                </a>
-                <a
-                  href="#contact"
-                  className="rounded-none border border-black px-5 py-3 text-sm uppercase tracking-[0.2em] transition hover:-translate-y-0.5"
-                >
-                  Discuss a Pilot
-                </a>
-              </div>
-            </div>
+    .caps {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+    }
 
-            
-          </div>
-        </header>
+    .btn {
+      display: inline-block;
+      border: 1px solid var(--border);
+      padding: 12px 18px;
+      text-decoration: none;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 12px;
+      transition: transform 120ms ease;
+      background: transparent;
+    }
 
-        <main id="overview" className="mt-10 space-y-8">
-          <section className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-            <article className="border border-black bg-white p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <div className="text-[11px] uppercase tracking-[0.25em]">The Blind Spot</div>
-              <p className="mt-4 text-xl leading-8 text-black/90">
-                The illusion of control.
-              </p>
-              <p className="mt-4 text-base leading-7 text-black/85">
-                The biggest blind spot is believing a deployed AI system is controlled when it has never been seriously audited in practice.
-              </p>
-              <p className="mt-4 text-base leading-7 text-black/85">
-                The cost is unknown liability: legal exposure, reputational damage, customer mistrust, and failures the organization may not detect until they become expensive.
-              </p>
-            </article>
+    .btn:hover { transform: translateY(-2px); }
 
-            <article className="border border-black bg-white p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <div className="text-[11px] uppercase tracking-[0.25em]">What the Audit Makes Visible</div>
-              <p className="mt-4 text-base leading-7 text-black/85">
-                Reflective Diagnostics applies explicit, rule-based measurement to show where a deployed AI system creates exposure, where it breaks under real conditions, and what needs to change first.
-              </p>
-              <div className="mt-5 grid gap-4 md:grid-cols-2 text-base leading-7 text-black/85">
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Exposure</div>
-                  <p className="mt-1 text-black/75">Where the system creates legal, reputational, customer, or operational risk.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Defensibility</div>
-                  <p className="mt-1 text-black/75">Whether the current deployment is strong enough to stand behind in practice.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Failure Conditions</div>
-                  <p className="mt-1 text-black/75">What kinds of interactions, edge cases, or pressures cause breakdown.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Action Priorities</div>
-                  <p className="mt-1 text-black/75">What should change first: model choice, workflow design, controls, or monitoring.</p>
-                </div>
-              </div>
-            </article>
-          </section>
+    .btn-primary {
+      background: #000;
+      color: #fff;
+    }
 
-          <section className="grid gap-6 lg:grid-cols-[1fr]">
-            <article className="border border-black bg-white p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <div className="text-[11px] uppercase tracking-[0.25em]">What You Receive</div>
-              <p className="mt-4 text-base leading-7 text-black/85">
-                A detailed audit report built for real deployment decisions.
-              </p>
-              <div className="mt-5 grid gap-4 md:grid-cols-2 text-base leading-7 text-black/85">
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Comparative findings</div>
-                  <p className="mt-1 text-black/75">How the current system performs against other major models or candidate alternatives.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Multi-metric evaluation</div>
-                  <p className="mt-1 text-black/75">Assessment across a broad set of structured metrics, depending on audit scope.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Failure analysis</div>
-                  <p className="mt-1 text-black/75">Where the system breaks, drifts, or creates hidden exposure.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Priority actions</div>
-                  <p className="mt-1 text-black/75">What should change first in the model, wrapper, workflow, or controls.</p>
-                </div>
-              </div>
-            </article>
-          </section>
+    .hero {
+      padding: 44px 28px 40px;
+    }
 
-          <section className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-            <article className="border border-black bg-white p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <div className="text-[11px] uppercase tracking-[0.25em]">What We Measure</div>
-              <p className="mt-4 text-base leading-7 text-black/85">
-                Reflective Diagnostics evaluates the known failure modes of deployed LLM systems and makes deployment-specific exposure visible.
-              </p>
-              <div className="mt-5 grid gap-4 md:grid-cols-2 text-base leading-7 text-black/85">
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Accuracy and fabrication</div>
-                  <p className="mt-1 text-black/75">Where the system produces incorrect, misleading, or invented output.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Confidence and misleading fluency</div>
-                  <p className="mt-1 text-black/75">Where the system sounds certain or persuasive without being dependable.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Policy and boundary failure</div>
-                  <p className="mt-1 text-black/75">Where the system drifts outside instructions, guardrails, or expected limits.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Stability across prompts and versions</div>
-                  <p className="mt-1 text-black/75">Where behavior changes across prompt variation, configuration changes, or model updates.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Breakdown under pressure</div>
-                  <p className="mt-1 text-black/75">What kinds of edge cases, adversarial inputs, or unusual conditions trigger failure.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Deployment-specific exposure</div>
-                  <p className="mt-1 text-black/75">Where the current model, wrapper, workflow, or use case creates hidden business risk.</p>
-                </div>
-              </div>
-            </article>
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(64px, 8vw, 110px);
+      line-height: 0.95;
+      font-weight: 600;
+      max-width: 1100px;
+    }
 
-            <article className="border border-black bg-white p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <div className="text-[11px] uppercase tracking-[0.25em]">Why Rule-Based Matters</div>
-              <p className="mt-4 text-base leading-7 text-black/85">
-                Deployed AI systems are probabilistic. They can sound fluent and consistent while behaving differently across prompts, contexts, and edge cases.
-              </p>
-              <p className="mt-4 text-base leading-7 text-black/85">
-                Many teams still rely on surface checks, vendor claims, or AI systems scoring other AI systems. That can be useful for speed, but it is not the same as an explicit audit layer.
-              </p>
-              <p className="mt-4 text-base leading-7 text-black/85">
-                Reflective Diagnostics applies rule-based measurement so findings are traceable, explainable, and easier to stand behind when exposure is real.
-              </p>
-            </article>
-          </section>
+    .hero .sub {
+      margin-top: 28px;
+      font-size: clamp(24px, 2.2vw, 34px);
+      line-height: 1.3;
+      max-width: 980px;
+    }
 
-          <section className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-            <article className="border border-black bg-white p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <div className="text-[11px] uppercase tracking-[0.25em]">Best For</div>
-              <div className="mt-5 grid gap-4 text-base leading-7 text-black/85">
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Customer-facing AI</div>
-                  <p className="mt-1 text-black/75">Chatbots, intake flows, and automated support systems where failure creates visible exposure.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Internal copilots</div>
-                  <p className="mt-1 text-black/75">Knowledge and workflow systems that influence decisions without a serious audit layer.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">AI product teams</div>
-                  <p className="mt-1 text-black/75">Teams that need to understand whether a deployment is defensible before scaling it.</p>
-                </div>
-              </div>
-            </article>
+    .hero .desc {
+      margin-top: 24px;
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 760px;
+    }
 
-            <article className="border border-black bg-white p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <div className="text-[11px] uppercase tracking-[0.25em]">What This Helps You Decide</div>
-              <p className="mt-4 text-base leading-7 text-black/85">
-                Reflective Diagnostics helps organizations make clearer decisions about the AI systems they have already deployed.
-              </p>
-              <div className="mt-5 grid gap-4 md:grid-cols-2 text-base leading-7 text-black/85">
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Model choice</div>
-                  <p className="mt-1 text-black/75">Whether the current model is the right one for the deployment.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Deployment exposure</div>
-                  <p className="mt-1 text-black/75">Where the current setup creates legal, reputational, customer, or operational risk.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Failure patterns</div>
-                  <p className="mt-1 text-black/75">What kinds of prompts, edge cases, or conditions cause breakdown.</p>
-                </div>
-                <div className="border-l-2 border-black pl-4">
-                  <div className="font-semibold">Priority fixes</div>
-                  <p className="mt-1 text-black/75">What should change first in the model, wrapper, workflow, or controls.</p>
-                </div>
-              </div>
-            </article>
-          </section>
-        </main>
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
 
-        <footer id="contact" className="mt-10 border border-black bg-black px-6 py-8 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,0.25)]">
-          <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
-            <div>
-              <div className="text-[11px] uppercase tracking-[0.25em] text-white/70">Reflective Diagnostics</div>
-              <h2 className="mt-3 text-2xl font-semibold md:text-3xl">A rule-based instrument for evaluating reasoning reliability.</h2>
-              <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80">
-                Designed for organizations that need structured evidence rather than persuasive outputs.
-              </p>
-            </div>
-            <div className="text-sm uppercase tracking-[0.2em] text-white/70">Public Overview / 2026</div>
-          </div>
-        </footer>
+    .stack {
+      margin-top: 28px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+    }
+
+    .lead-xl {
+      margin: 14px 0 0;
+      font-size: 40px;
+      line-height: 1.2;
+    }
+
+    .lead {
+      margin: 14px 0 0;
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--muted-strong);
+    }
+
+    .items-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 28px;
+      margin-top: 20px;
+    }
+
+    .items-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px 24px;
+      margin-top: 20px;
+    }
+
+    .item {
+      border-left: 2px solid var(--border);
+      padding-left: 16px;
+    }
+
+    .item h3 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .item p {
+      margin: 8px 0 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .footer {
+      margin-top: 24px;
+      background: #000;
+      color: #fff;
+      border: 1px solid var(--border);
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.25);
+      padding: 28px 24px;
+    }
+
+    .footer h2 {
+      margin: 12px 0 0;
+      font-size: 28px;
+      line-height: 1.25;
+    }
+
+    .footer p {
+      margin: 14px 0 0;
+      max-width: 760px;
+      color: rgba(255,255,255,0.82);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .footer a {
+      color: #fff;
+    }
+
+    @media (max-width: 960px) {
+      .grid-2,
+      .items-2,
+      .items-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 34px 22px 30px;
+      }
+
+      .topbar {
+        padding: 14px 22px;
+      }
+
+      .lead-xl {
+        font-size: 32px;
+      }
+
+      .hero .desc {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="panel">
+      <div class="topbar">
+        <div class="caps">EnlightenedAI Research Lab</div>
+        <a class="btn" href="mailto:research@enlightedai.ai">Contact Us</a>
       </div>
-    </div>
-  );
-}
+
+      <div class="hero">
+        <h1>This tool does not use AI.</h1>
+        <div class="sub">Your AI can sound trustworthy without actually being reliable. That puts your organization at risk.</div>
+        <div class="desc"><strong>Reflective Diagnostics</strong> is a rule-based audit framework for deployed AI systems.</div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#overview">View Overview</a>
+          <a class="btn" href="mailto:research@enlightedai.ai">Contact Us</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="overview" class="stack">
+      <section class="grid-2">
+        <article class="card">
+          <div class="eyebrow">The Blind Spot</div>
+          <div class="lead-xl">The illusion of control.</div>
+          <p class="lead">The biggest blind spot is believing a deployed AI system is controlled when it has never been seriously audited in practice.</p>
+          <p class="lead">The cost is unknown liability: legal exposure, reputational damage, customer mistrust, and failures the organization may not detect until they become expensive.</p>
+        </article>
+
+        <article class="card">
+          <div class="eyebrow">What the Audit Makes Visible</div>
+          <p class="lead">Reflective Diagnostics applies explicit, rule-based measurement to show where a deployed AI system creates exposure, where it breaks under real conditions, and what needs to change first.</p>
+
+          <div class="items-2">
+            <div class="item">
+              <h3>Exposure</h3>
+              <p>Where the system creates legal, reputational, customer, or operational risk.</p>
+            </div>
+            <div class="item">
+              <h3>Defensibility</h3>
+              <p>Whether the current deployment is strong enough to stand behind in practice.</p>
+            </div>
+            <div class="item">
+              <h3>Failure Conditions</h3>
+              <p>What kinds of interactions, edge cases, or pressures cause breakdown.</p>
+            </div>
+            <div class="item">
+              <h3>Action Priorities</h3>
+              <p>What should change first: model choice, workflow design, controls, or monitoring.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="grid-2">
+        <article class="card">
+          <div class="eyebrow">What You Receive</div>
+          <p class="lead">A detailed audit report built for real deployment decisions.</p>
+
+          <div class="items-2">
+            <div class="item">
+              <h3>Comparative findings</h3>
+              <p>How the current system performs against other major models or candidate alternatives.</p>
+            </div>
+            <div class="item">
+              <h3>Multi-metric evaluation</h3>
+              <p>Assessment across a broad set of structured metrics, depending on audit scope.</p>
+            </div>
+            <div class="item">
+              <h3>Failure analysis</h3>
+              <p>Where the system breaks, drifts, or creates hidden exposure.</p>
+            </div>
+            <div class="item">
+              <h3>Priority actions</h3>
+              <p>What should change first in the model, wrapper, workflow, or controls.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="eyebrow">Simple to Start</div>
+          <p class="lead">No model weights or internal model access are required.</p>
+
+          <div class="items-3">
+            <div class="item">
+              <h3>Questionnaire</h3>
+              <p>A structured set of prompts and responses for initial review. This is the lightest starting point, but also the most surface-level.</p>
+            </div>
+            <div class="item">
+              <h3>Direct chatbot access</h3>
+              <p>We prompt the deployed chatbot directly and test how it behaves under controlled conditions.</p>
+            </div>
+            <div class="item">
+              <h3>API access</h3>
+              <p>The system can be connected directly for larger batches, repeatable runs, and broader audit coverage.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="grid-2">
+        <article class="card">
+          <div class="eyebrow">What We Measure</div>
+          <p class="lead">Reflective Diagnostics evaluates the known failure modes of deployed LLM systems and makes deployment-specific exposure visible.</p>
+
+          <div class="items-2">
+            <div class="item">
+              <h3>Accuracy and fabrication</h3>
+              <p>Where the system produces incorrect, misleading, or invented output.</p>
+            </div>
+            <div class="item">
+              <h3>Confidence and misleading fluency</h3>
+              <p>Where the system sounds certain or persuasive without being dependable.</p>
+            </div>
+            <div class="item">
+              <h3>Policy and boundary failure</h3>
+              <p>Where the system drifts outside instructions, guardrails, or expected limits.</p>
+            </div>
+            <div class="item">
+              <h3>Stability across prompts and versions</h3>
+              <p>Where behavior changes across prompt variation, configuration changes, or model updates.</p>
+            </div>
+            <div class="item">
+              <h3>Breakdown under pressure</h3>
+              <p>What kinds of edge cases, adversarial inputs, or unusual conditions trigger failure.</p>
+            </div>
+            <div class="item">
+              <h3>Deployment-specific exposure</h3>
+              <p>Where the current model, wrapper, workflow, or use case creates hidden business risk.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="eyebrow">Why Rule-Based Matters</div>
+          <p class="lead">Deployed AI systems are probabilistic. They can sound fluent and consistent while behaving differently across prompts, contexts, and edge cases.</p>
+          <p class="lead">Many teams still rely on surface checks, vendor claims, or AI systems scoring other AI systems. That can be useful for speed, but it is not the same as an explicit audit layer.</p>
+          <p class="lead">Reflective Diagnostics applies rule-based measurement so findings are traceable, explainable, and easier to stand behind when exposure is real.</p>
+        </article>
+      </section>
+
+      <section class="grid-2">
+        <article class="card">
+          <div class="eyebrow">Best For</div>
+
+          <div class="items-2" style="grid-template-columns:1fr;">
+            <div class="item">
+              <h3>Customer-facing AI</h3>
+              <p>Chatbots, intake flows, and automated support systems where failure creates visible exposure.</p>
+            </div>
+            <div class="item">
+              <h3>Internal copilots</h3>
+              <p>Knowledge and workflow systems that influence decisions without a serious audit layer.</p>
+            </div>
+            <div class="item">
+              <h3>AI product teams</h3>
+              <p>Teams that need to understand whether a deployment is defensible before scaling it.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="eyebrow">Contact</div>
+          <p class="lead">Reflective Diagnostics is built for organizations that need a clearer view of deployment exposure before hidden failures become harder to manage.</p>
+          <p class="lead">For audit inquiries, comparative evaluations, or initial scoping, contact us directly.</p>
+          <div class="hero-actions" style="margin-top:24px;">
+            <a class="btn btn-primary" href="mailto:research@enlightedai.ai">Contact Us</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="eyebrow" style="color:rgba(255,255,255,0.7)">Reflective Diagnostics</div>
+      <h2>A product of EnlightenedAI Research Lab.</h2>
+      <p>
+        Main site:
+        <a href="https://enlightedai.ai" target="_blank" rel="noopener noreferrer">enlightedai.ai</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -199,15 +199,14 @@
       line-height: 1.7;
     }
 
-    .footer .btn {
+    .footer a {
       color: #fff;
-      border-color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.5);
     }
 
-    .footer .btn-primary {
-      background: #fff;
-      color: #000;
-      border-color: #fff;
+    .footer a:hover {
+      border-bottom-color: rgba(255,255,255,1);
     }
 
     @media (max-width: 960px) {
@@ -250,7 +249,6 @@
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#overview">View Overview</a>
-          <a class="btn" href="mailto:research@enlightedai.ai">Contact Us</a>
         </div>
       </div>
     </header>
@@ -397,10 +395,26 @@
         </article>
 
         <article class="card">
-          <div class="eyebrow">Contact</div>
-          <p class="lead">For audit inquiries, comparative evaluations, or initial scoping, contact us directly.</p>
-          <div class="hero-actions" style="margin-top:24px;">
-            <a class="btn btn-primary" href="mailto:research@enlightedai.ai">Contact Us</a>
+          <div class="eyebrow">What You Receive</div>
+          <p class="lead">A detailed audit report built for real deployment decisions.</p>
+
+          <div class="items-2">
+            <div class="item">
+              <h3>Comparative findings</h3>
+              <p>How the current system performs against other major models or candidate alternatives.</p>
+            </div>
+            <div class="item">
+              <h3>Multi-metric evaluation</h3>
+              <p>Assessment across a broad set of structured metrics, depending on audit scope.</p>
+            </div>
+            <div class="item">
+              <h3>Failure analysis</h3>
+              <p>Where the system breaks, drifts, or creates hidden exposure.</p>
+            </div>
+            <div class="item">
+              <h3>Priority actions</h3>
+              <p>What should change first in the model, wrapper, workflow, or controls.</p>
+            </div>
           </div>
         </article>
       </section>
@@ -408,11 +422,7 @@
 
     <footer class="footer">
       <div class="eyebrow" style="color:rgba(255,255,255,0.7)">Reflective Diagnostics</div>
-      <h2>A rule-based audit framework for deployed AI systems.</h2>
-      <p>For audit inquiries, contact us directly.</p>
-      <div class="hero-actions" style="margin-top:24px;">
-        <a class="btn btn-primary" href="mailto:research@enlightedai.ai">Contact Us</a>
-      </div>
+      <h2>A product of <a href="https://enlightedai.ai" target="_blank" rel="noopener noreferrer">EnlightenedAI Research Lab</a>.</h2>
     </footer>
   </div>
 </body>

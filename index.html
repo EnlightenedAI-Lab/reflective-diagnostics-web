@@ -9,8 +9,8 @@
       --bg: #f7f4ee;
       --panel: #ffffff;
       --text: #111111;
-      --muted: rgba(17, 17, 17, 0.75);
-      --muted-strong: rgba(17, 17, 17, 0.85);
+      --muted: rgba(17, 17, 17, 0.72);
+      --muted-strong: rgba(17, 17, 17, 0.84);
       --border: #111111;
     }
 
@@ -22,12 +22,14 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg);
       color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     .page {
       max-width: 1320px;
       margin: 0 auto;
-      padding: 24px;
+      padding: 28px;
     }
 
     .panel {
@@ -40,7 +42,11 @@
       background: var(--panel);
       border: 1px solid var(--border);
       box-shadow: 6px 6px 0 rgba(0, 0, 0, 1);
-      padding: 24px;
+      padding: 28px;
+    }
+
+    .card.hero-card {
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, 1);
     }
 
     .topbar {
@@ -48,7 +54,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      padding: 16px 28px;
+      padding: 18px 30px;
       border-bottom: 1px solid var(--border);
       flex-wrap: wrap;
     }
@@ -56,7 +62,7 @@
     .caps {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.28em;
     }
 
     .btn {
@@ -75,42 +81,43 @@
     .btn:hover { transform: translateY(-2px); }
 
     .hero {
-      padding: 44px 28px 40px;
+      padding: 62px 30px 56px;
     }
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(64px, 8vw, 110px);
-      line-height: 0.95;
+      font-size: clamp(68px, 8.5vw, 118px);
+      line-height: 0.93;
       font-weight: 600;
-      max-width: 1100px;
+      max-width: 1180px;
+      letter-spacing: -0.03em;
     }
 
     .hero .sub {
-      margin-top: 28px;
+      margin-top: 38px;
       font-size: clamp(24px, 2.2vw, 34px);
-      line-height: 1.3;
+      line-height: 1.34;
       max-width: 980px;
     }
 
     .hero .desc {
-      margin-top: 24px;
+      margin-top: 30px;
       font-size: 20px;
-      line-height: 1.6;
+      line-height: 1.7;
       color: var(--muted);
       max-width: 760px;
     }
 
     .stack {
-      margin-top: 28px;
+      margin-top: 34px;
       display: grid;
-      gap: 24px;
+      gap: 28px;
     }
 
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 28px;
     }
 
     .eyebrow {
@@ -120,30 +127,31 @@
     }
 
     .lead-xl {
-      margin: 14px 0 0;
-      font-size: 40px;
-      line-height: 1.2;
+      margin: 16px 0 0;
+      font-size: 42px;
+      line-height: 1.18;
     }
 
     .lead {
-      margin: 14px 0 0;
-      font-size: 18px;
-      line-height: 1.7;
+      margin: 16px 0 0;
+      font-size: 17px;
+      line-height: 1.72;
       color: var(--muted-strong);
+      max-width: 60ch;
     }
 
     .items-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px 28px;
-      margin-top: 20px;
+      gap: 18px 30px;
+      margin-top: 24px;
     }
 
     .items-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px 24px;
-      margin-top: 20px;
+      gap: 18px 24px;
+      margin-top: 24px;
     }
 
     .item {
@@ -153,70 +161,85 @@
 
     .item h3 {
       margin: 0;
-      font-size: 18px;
-      line-height: 1.4;
+      font-size: 17px;
+      line-height: 1.42;
+      font-weight: 600;
     }
 
     .item p {
       margin: 8px 0 0;
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 15px;
+      line-height: 1.72;
+      color: var(--muted);
+    }
+
+    .quiet .lead,
+    .quiet .item p {
       color: var(--muted);
     }
 
     .footer {
-      margin-top: 24px;
+      margin-top: 28px;
       background: #000;
       color: #fff;
       border: 1px solid var(--border);
-      box-shadow: 8px 8px 0 rgba(0,0,0,0.25);
-      padding: 28px 24px;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
+      padding: 30px 28px;
     }
 
     .footer h2 {
       margin: 12px 0 0;
-      font-size: 28px;
-      line-height: 1.25;
+      font-size: 26px;
+      line-height: 1.28;
+      font-weight: 600;
     }
 
     .footer a {
       color: #fff;
       text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.5);
+      border-bottom: 1px solid rgba(255,255,255,0.45);
     }
 
     .footer a:hover {
       border-bottom-color: rgba(255,255,255,1);
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 980px) {
       .grid-2,
       .items-2,
       .items-3 {
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        padding: 34px 22px 30px;
+      .page {
+        padding: 18px;
       }
 
       .topbar {
-        padding: 14px 22px;
+        padding: 16px 20px;
+      }
+
+      .hero {
+        padding: 42px 20px 38px;
       }
 
       .lead-xl {
-        font-size: 32px;
+        font-size: 34px;
       }
 
       .hero .desc {
         font-size: 18px;
+      }
+
+      .card {
+        padding: 22px;
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <header class="panel">
+    <header class="panel hero-card">
       <div class="topbar">
         <div class="caps">EnlightenedAI Research Lab</div>
         <a class="btn" href="mailto:research@enlightedai.ai">Contact Us</a>
@@ -264,7 +287,7 @@
       </section>
 
       <section class="grid-2">
-        <article class="card">
+        <article class="card quiet">
           <div class="eyebrow">What You Receive</div>
           <p class="lead">A detailed audit report built for real deployment decisions.</p>
 
@@ -288,7 +311,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card quiet">
           <div class="eyebrow">Simple to Start</div>
           <p class="lead">No model weights or internal model access are required.</p>
 
@@ -310,7 +333,7 @@
       </section>
 
       <section class="grid-2">
-        <article class="card">
+        <article class="card quiet">
           <div class="eyebrow">What We Measure</div>
           <p class="lead">Reflective Diagnostics evaluates the known failure modes of deployed LLM systems and makes deployment-specific exposure visible.</p>
 
@@ -342,7 +365,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card quiet">
           <div class="eyebrow">Why Rule-Based Matters</div>
           <p class="lead">Deployed AI systems are probabilistic. They can sound fluent and consistent while behaving differently across prompts, contexts, and edge cases.</p>
           <p class="lead">Many teams still rely on surface checks, vendor claims, or AI systems scoring other AI systems. That can be useful for speed, but it is not the same as an explicit audit layer.</p>
@@ -351,10 +374,10 @@
       </section>
 
       <section class="grid-2">
-        <article class="card">
+        <article class="card quiet">
           <div class="eyebrow">Best For</div>
 
-          <div class="items-2" style="grid-template-columns:1fr;">
+          <div class="items-2" style="grid-template-columns: 1fr;">
             <div class="item">
               <h3>Customer-facing AI</h3>
               <p>Chatbots, intake flows, and automated support systems where failure creates visible exposure.</p>
@@ -370,7 +393,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card quiet">
           <div class="eyebrow">What You Receive</div>
           <p class="lead">A detailed audit report built for real deployment decisions.</p>
 
@@ -397,7 +420,7 @@
     </main>
 
     <footer class="footer">
-      <div class="eyebrow" style="color:rgba(255,255,255,0.7)">Reflective Diagnostics</div>
+      <div class="eyebrow" style="color: rgba(255,255,255,0.7);">Reflective Diagnostics</div>
       <h2>A product of <a href="https://enlightedai.ai" target="_blank" rel="noopener noreferrer">EnlightenedAI Research Lab</a>.</h2>
     </footer>
   </div>

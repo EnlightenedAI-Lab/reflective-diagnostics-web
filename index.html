@@ -76,6 +76,11 @@
 
     .btn:hover { transform: translateY(-2px); }
 
+    .btn-primary {
+      background: #000;
+      color: #fff;
+    }
+
     .hero {
       padding: 56px 34px 60px;
     }
@@ -167,6 +172,10 @@
       font-size: 15px;
       line-height: 1.72;
       color: var(--muted);
+    }
+
+    .item .mini-cta {
+      margin-top: 16px;
     }
 
     .quiet .lead,
@@ -322,16 +331,19 @@
 
           <div class="items-3">
             <div class="item">
-              <h3>Questionnaire</h3>
-              <p>A structured set of prompts and responses for initial review. This is the lightest starting point, but also the most surface-level.</p>
+              <h3>Scoping form</h3>
+              <p>A short intake form to understand the system, the use case, and what access is available.</p>
+              <div class="mini-cta">
+                <a class="btn btn-primary" href="YOUR_GOOGLE_FORM_URL" target="_blank" rel="noopener noreferrer">Start Audit Intake</a>
+              </div>
             </div>
             <div class="item">
               <h3>Direct chatbot access</h3>
-              <p>We prompt the deployed chatbot directly and test how it behaves under controlled conditions.</p>
+              <p>The normal audit path. We prompt the deployed chatbot directly and test how it behaves under controlled conditions.</p>
             </div>
             <div class="item">
               <h3>API access</h3>
-              <p>The system can be connected directly for larger batches, repeatable runs, and broader audit coverage.</p>
+              <p>Preferred for larger batches, repeatable runs, and broader comparative audit coverage.</p>
             </div>
           </div>
         </article>

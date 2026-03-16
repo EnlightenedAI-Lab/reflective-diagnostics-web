@@ -224,7 +224,6 @@
       line-height: 1.7;
     }
 
-    /* Modal */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -350,7 +349,7 @@
       <div class="hero">
         <h1>This tool does not use AI.</h1>
         <div class="sub">Your AI can sound trustworthy without actually being reliable. That puts your organization at risk.</div>
-        <div class="desc"><strong>Reflective Diagnostics</strong> is a rule-based audit framework for deployed AI systems.</div>
+        <div class="desc"><strong>Reflective Diagnostics</strong> is a rule-based audit layer for AI systems.</div>
       </div>
     </header>
 
@@ -358,31 +357,31 @@
       <section class="grid-2">
         <article class="card">
           <div class="eyebrow">The Blind Spot</div>
-          <div class="lead-xl">The illusion of control.</div>
-          <p class="lead">The biggest blind spot is believing a deployed AI system is controlled when it has never been seriously audited in practice.</p>
-          <p class="lead">The cost is unknown liability: legal exposure, reputational damage, customer mistrust, and failures the organization may not detect until they become expensive.</p>
+          <div class="lead-xl">Thinking the system is under control.</div>
+          <p class="lead">Many AI systems look fine until they are tested seriously. That creates a false sense of confidence.</p>
+          <p class="lead">The real cost can be legal exposure, reputational damage, customer mistrust, and failures that are only noticed once they become expensive.</p>
         </article>
 
         <article class="card">
           <div class="eyebrow">What the Audit Makes Visible</div>
-          <p class="lead">Reflective Diagnostics applies explicit, rule-based measurement to show where a deployed AI system creates exposure, where it breaks under real conditions, and what needs to change first.</p>
+          <p class="lead">Reflective Diagnostics uses explicit rules to show where an AI system creates risk, where it breaks, and what should be fixed first.</p>
 
           <div class="items-2">
             <div class="item">
               <h3>Exposure</h3>
-              <p>Where the system creates legal, reputational, customer, or operational risk.</p>
+              <p>Where the system creates legal, customer, reputational, or operational risk.</p>
             </div>
             <div class="item">
               <h3>Defensibility</h3>
-              <p>Whether the current deployment is strong enough to stand behind in practice.</p>
+              <p>Whether the current system is strong enough to rely on in practice.</p>
             </div>
             <div class="item">
               <h3>Failure Conditions</h3>
-              <p>What kinds of interactions, edge cases, or pressures cause breakdown.</p>
+              <p>What kinds of prompts, edge cases, or pressures cause it to break.</p>
             </div>
             <div class="item">
               <h3>Action Priorities</h3>
-              <p>What should change first: model choice, workflow design, controls, or monitoring.</p>
+              <p>What should change first: the model, the wrapper, the workflow, or the controls.</p>
             </div>
           </div>
         </article>
@@ -391,16 +390,16 @@
       <section class="grid-2">
         <article class="card quiet">
           <div class="eyebrow">What You Receive</div>
-          <p class="lead">A detailed audit report built for real deployment decisions.</p>
+          <p class="lead">A practical audit report for real deployment decisions.</p>
 
           <div class="items-2">
             <div class="item">
               <h3>Comparative findings</h3>
-              <p>How the current system performs against other major models or candidate alternatives.</p>
+              <p>How your current system performs against other major models or alternatives.</p>
             </div>
             <div class="item">
               <h3>Multi-metric evaluation</h3>
-              <p>Assessment across a broad set of structured metrics, depending on audit scope.</p>
+              <p>A view across multiple reliability signals, based on the scope of the audit.</p>
             </div>
             <div class="item">
               <h3>Failure analysis</h3>
@@ -408,7 +407,7 @@
             </div>
             <div class="item">
               <h3>Priority actions</h3>
-              <p>What should change first in the model, wrapper, workflow, or controls.</p>
+              <p>What should change first to reduce risk and improve reliability.</p>
             </div>
           </div>
         </article>
@@ -427,11 +426,11 @@
             </div>
             <div class="item">
               <h3>Direct chatbot access</h3>
-              <p>The normal audit path. We prompt the deployed chatbot directly and test how it behaves under controlled conditions.</p>
+              <p>The standard audit path. We prompt the system directly and test how it behaves under controlled conditions.</p>
             </div>
             <div class="item">
               <h3>API access</h3>
-              <p>Preferred for larger batches, repeatable runs, and broader comparative audit coverage.</p>
+              <p>Best for larger runs, repeatable testing, and broader model comparison.</p>
             </div>
           </div>
         </article>
@@ -440,41 +439,41 @@
       <section class="grid-2">
         <article class="card quiet">
           <div class="eyebrow">What We Measure</div>
-          <p class="lead">Reflective Diagnostics evaluates the known failure modes of deployed LLM systems and makes deployment-specific exposure visible.</p>
+          <p class="lead">Reflective Diagnostics focuses on the failure modes that matter in real deployments.</p>
 
           <div class="items-2">
             <div class="item">
               <h3>Accuracy and fabrication</h3>
-              <p>Where the system produces incorrect, misleading, or invented output.</p>
+              <p>Where the system gives wrong answers, misleading answers, or makes things up.</p>
             </div>
             <div class="item">
-              <h3>Confidence and misleading fluency</h3>
-              <p>Where the system sounds certain or persuasive without being dependable.</p>
+              <h3>Confidence and fluency</h3>
+              <p>Where the system sounds sure of itself without being dependable.</p>
             </div>
             <div class="item">
               <h3>Policy and boundary failure</h3>
-              <p>Where the system drifts outside instructions, guardrails, or expected limits.</p>
+              <p>Where the system drifts outside instructions, limits, or expected behavior.</p>
             </div>
             <div class="item">
-              <h3>Stability across prompts and versions</h3>
-              <p>Where behavior changes across prompt variation, configuration changes, or model updates.</p>
+              <h3>Stability</h3>
+              <p>Where behavior changes across prompts, configurations, or model versions.</p>
             </div>
             <div class="item">
               <h3>Breakdown under pressure</h3>
-              <p>What kinds of edge cases, adversarial inputs, or unusual conditions trigger failure.</p>
+              <p>What edge cases, adversarial inputs, or unusual conditions trigger failure.</p>
             </div>
             <div class="item">
-              <h3>Deployment-specific exposure</h3>
-              <p>Where the current model, wrapper, workflow, or use case creates hidden business risk.</p>
+              <h3>Business exposure</h3>
+              <p>Where the current setup creates hidden risk for the organization.</p>
             </div>
           </div>
         </article>
 
         <article class="card quiet">
           <div class="eyebrow">Why Rule-Based Matters</div>
-          <p class="lead">Deployed AI systems are probabilistic. They can sound fluent and consistent while behaving differently across prompts, contexts, and edge cases.</p>
-          <p class="lead">Many teams still rely on surface checks, vendor claims, or AI systems scoring other AI systems. That can be useful for speed, but it is not the same as an explicit audit layer.</p>
-          <p class="lead">Reflective Diagnostics applies rule-based measurement so findings are traceable, explainable, and easier to stand behind when exposure is real.</p>
+          <p class="lead">AI systems can sound fluent and consistent while behaving very differently across prompts and conditions.</p>
+          <p class="lead">Many teams still rely on surface checks, vendor claims, or one AI system scoring another. That can be useful, but it is not the same as an explicit audit layer.</p>
+          <p class="lead">Reflective Diagnostics uses rule-based measurement so the findings are traceable, explainable, and easier to stand behind when the stakes are real.</p>
         </article>
       </section>
 
@@ -485,7 +484,7 @@
           <div class="items-2">
             <div class="item">
               <h3>Customer-facing AI</h3>
-              <p>Chatbots, intake flows, and automated support systems where failure creates visible exposure.</p>
+              <p>Chatbots, intake flows, and support systems where failure creates visible risk.</p>
             </div>
             <div class="item">
               <h3>Internal copilots</h3>
@@ -493,11 +492,11 @@
             </div>
             <div class="item">
               <h3>AI product teams</h3>
-              <p>Teams that need to understand whether a deployment is defensible before scaling it.</p>
+              <p>Teams that need to know whether a deployment is strong enough before they scale it.</p>
             </div>
             <div class="item">
-              <h3>Regulated or high-stakes workflows</h3>
-              <p>Deployments in legal, insurance, healthcare, financial, or compliance-sensitive contexts where misleading outputs can create outsized risk.</p>
+              <h3>High-stakes workflows</h3>
+              <p>Deployments in legal, insurance, healthcare, finance, or compliance-sensitive settings where bad outputs carry real cost.</p>
             </div>
           </div>
         </article>

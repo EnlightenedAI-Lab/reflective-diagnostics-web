@@ -15,6 +15,8 @@
       --shadow: #000000;
       --accent-soft: #e8efe9;
       --accent-line: #7e9b84;
+      --module-blue: #0a84ff;
+      --module-blue-soft: #eaf3ff;
     }
 
     * {
@@ -136,6 +138,15 @@
       text-transform: uppercase;
     }
 
+    .module-tag {
+      display: inline-block;
+      padding: 8px 12px;
+      background: var(--module-blue-soft);
+      color: var(--module-blue);
+      border: 1px solid var(--module-blue);
+      font-weight: 700;
+    }
+
     .panel p,
     .takeaway p {
       margin: 0 0 16px;
@@ -200,27 +211,31 @@
     }
 
     .domain-list,
-    .metric-list {
+    .metric-list,
+    .mini-list {
       list-style: none;
       padding: 0;
       margin: 0;
     }
 
     .domain-list li,
-    .metric-list li {
+    .metric-list li,
+    .mini-list li {
       font-size: clamp(20px, 1.5vw, 27px);
       padding: 14px 0;
       border-bottom: 1px solid var(--soft-line);
     }
 
     .domain-list li:last-child,
-    .metric-list li:last-child {
+    .metric-list li:last-child,
+    .mini-list li:last-child {
       border-bottom: 0;
       padding-bottom: 0;
     }
 
     .domain-list strong,
-    .metric-list strong {
+    .metric-list strong,
+    .mini-list strong {
       font-weight: 700;
     }
 
@@ -368,7 +383,7 @@
 
     <section id="ground-truth" class="section-grid module-anchor">
       <div class="panel">
-        <p class="label">Module 1</p>
+        <p class="label module-tag">Module 1</p>
         <h2>Ground Truth Battery</h2>
         <p>When different AIs give different answers, the first place to test them is where the answer is already known.</p>
         <p><strong>This module measures:</strong></p>
@@ -408,6 +423,26 @@
           <h3>Why it matters</h3>
           <p>If a model is confidently wrong on known truths, its confidence becomes even less trustworthy where truth is harder to verify.</p>
         </div>
+      </div>
+    </section>
+
+    <section id="probe" class="section-grid module-anchor">
+      <div class="panel">
+        <p class="label module-tag">Module 2</p>
+        <h2>Probe</h2>
+        <p>Live multi-model testing.</p>
+        <ul class="mini-list">
+          <li><strong>Parallel</strong> — Several models</li>
+          <li><strong>Controlled</strong> — Same prompt</li>
+          <li><strong>Evidence</strong> — Assigned run ID</li>
+          <li><strong>Export</strong> — JSON record</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <p class="label">Why it matters</p>
+        <h2>One prompt can produce very different model behavior.</h2>
+        <p>Probe makes those differences visible in a live run before they disappear behind a final answer.</p>
       </div>
     </section>
   </div>

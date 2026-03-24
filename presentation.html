@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reflective Diagnostics — Presentation</title>
+  <style>
+    :root {
+      --bg: #efeeeb;
+      --card: #f5f4f1;
+      --text: #111111;
+      --muted: #5d5d5d;
+      --line: #2c2c2c;
+      --soft-line: #d8d6d1;
+      --shadow: #000000;
+      --accent-soft: #e8efe9;
+      --accent-line: #7e9b84;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.35;
+    }
+
+    .wrap {
+      width: min(1600px, calc(100% - 48px));
+      margin: 22px auto 80px;
+    }
+
+    .hero,
+    .panel,
+    .takeaway {
+      background: var(--card);
+      border: 2px solid var(--line);
+      box-shadow: 10px 10px 0 var(--shadow);
+    }
+
+    .hero {
+      margin-bottom: 48px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 40px;
+      border-bottom: 2px solid var(--line);
+      letter-spacing: 0.22em;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .contact-btn {
+      border: 2px solid var(--line);
+      padding: 18px 26px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: transparent;
+    }
+
+    .hero-inner {
+      padding: 70px 48px 58px;
+    }
+
+    .eyebrow {
+      font-size: 16px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+    }
+
+    h1 {
+      font-size: clamp(56px, 8vw, 118px);
+      line-height: 0.95;
+      margin: 0 0 34px;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-copy {
+      max-width: 1200px;
+      font-size: clamp(24px, 2.2vw, 34px);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .hero-copy p {
+      margin: 0 0 18px;
+    }
+
+    .hero-copy strong {
+      font-weight: 700;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 34px 38px 34px;
+    }
+
+    .panel h2,
+    .takeaway h2 {
+      margin: 0 0 24px;
+      font-size: clamp(28px, 3vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      font-weight: 600;
+    }
+
+    .panel .label,
+    .takeaway .label {
+      display: inline-block;
+      margin-bottom: 22px;
+      font-size: 15px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+    }
+
+    .panel p,
+    .takeaway p {
+      margin: 0 0 16px;
+      font-size: clamp(22px, 1.8vw, 30px);
+      line-height: 1.42;
+    }
+
+    .panel p:last-child,
+    .takeaway p:last-child {
+      margin-bottom: 0;
+    }
+
+    .method-note {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--soft-line);
+    }
+
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .matrix th,
+    .matrix td {
+      padding: 22px 10px;
+      border-bottom: 1px solid var(--soft-line);
+      font-size: clamp(18px, 1.4vw, 26px);
+      text-align: center;
+    }
+
+    .matrix th:first-child,
+    .matrix td:first-child {
+      text-align: left;
+      padding-left: 0;
+      width: 42%;
+    }
+
+    .matrix th {
+      font-weight: 700;
+    }
+
+    .matrix tr.rd-row td {
+      background: var(--accent-soft);
+      font-weight: 700;
+    }
+
+    .matrix tr.rd-row td:first-child {
+      border-left: 3px solid var(--accent-line);
+      padding-left: 14px;
+    }
+
+    .legend {
+      margin-top: 18px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .symbol-yes {
+      font-weight: 700;
+    }
+
+    .domain-list,
+    .metric-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .domain-list li,
+    .metric-list li {
+      font-size: clamp(20px, 1.5vw, 27px);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--soft-line);
+    }
+
+    .domain-list li:last-child,
+    .metric-list li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .domain-list strong,
+    .metric-list strong {
+      font-weight: 700;
+    }
+
+    .takeaway {
+      padding: 34px 38px;
+      margin-bottom: 48px;
+    }
+
+    .takeaway-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 12px;
+    }
+
+    .takeaway-box {
+      border-top: 1px solid var(--soft-line);
+      padding-top: 18px;
+    }
+
+    .takeaway-box h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .takeaway-box p {
+      font-size: clamp(18px, 1.35vw, 24px);
+      margin: 0;
+    }
+
+    .module-anchor {
+      scroll-margin-top: 40px;
+    }
+
+    @media (max-width: 1100px) {
+      .section-grid,
+      .takeaway-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner {
+        padding: 48px 28px 42px;
+      }
+
+      .panel,
+      .takeaway {
+        padding: 28px 24px;
+      }
+
+      .topbar {
+        padding: 18px 24px;
+        gap: 16px;
+      }
+
+      .contact-btn {
+        padding: 14px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="topbar">
+        <div>EnlightenedAI Research Lab</div>
+        <a class="contact-btn" href="mailto:research@enlightenedai.ai">Contact Us</a>
+      </div>
+      <div class="hero-inner">
+        <p class="eyebrow">Presentation</p>
+        <h1>Organizations are deploying AI they do not actually know how to evaluate.</h1>
+        <div class="hero-copy">
+          <p>They can see the answer, but not the hidden risk behind it.</p>
+          <p>What looks trustworthy may still be unsupported, unstable, or confidently wrong.</p>
+          <p><strong>Reflective Diagnostics shows what sits behind the answer.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-grid">
+      <div class="panel">
+        <p class="label">Methodological contrast</p>
+        <h2>Most systems evaluate AI through interpretation.</h2>
+        <p><strong>Reflective Diagnostics evaluates it through explicit, repeatable rules.</strong></p>
+        <div class="method-note">
+          <p>It does not use AI to judge AI. It uses structured rules to make hidden reliability signals visible.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p class="label">Why this matters</p>
+        <h2>Most evaluation methods can see the output.</h2>
+        <p><strong>Very few reveal whether the system is actually reliable.</strong></p>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-bottom: 48px;">
+      <p class="label">What organizations use today</p>
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Approach</th>
+            <th>Output</th>
+            <th>Correctness</th>
+            <th>Reliability</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Provider benchmarks</td>
+            <td class="symbol-yes">✓</td>
+            <td>~</td>
+            <td>×</td>
+          </tr>
+          <tr>
+            <td>Prompt comparison</td>
+            <td class="symbol-yes">✓</td>
+            <td>~</td>
+            <td>×</td>
+          </tr>
+          <tr>
+            <td>Human review</td>
+            <td class="symbol-yes">✓</td>
+            <td>~</td>
+            <td>~</td>
+          </tr>
+          <tr>
+            <td>Judge-based scoring</td>
+            <td class="symbol-yes">✓</td>
+            <td>~</td>
+            <td>~</td>
+          </tr>
+          <tr class="rd-row">
+            <td>Reflective Diagnostics</td>
+            <td class="symbol-yes">✓</td>
+            <td class="symbol-yes">✓</td>
+            <td class="symbol-yes">✓</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="legend">✓ clear visibility &nbsp;&nbsp; ~ partial visibility &nbsp;&nbsp; × not visible</div>
+    </section>
+
+    <section id="ground-truth" class="section-grid module-anchor">
+      <div class="panel">
+        <p class="label">Module 1</p>
+        <h2>Ground Truth Battery</h2>
+        <p>When different AIs give different answers, the first place to test them is where the answer is already known.</p>
+        <p><strong>This module measures:</strong></p>
+        <ul class="metric-list">
+          <li><strong>Accuracy %</strong> — how often the model gets the known answer right</li>
+          <li><strong>Avg Confidence</strong> — how sure the model is when answering</li>
+          <li><strong>Overconfidence Score</strong> — whether confidence stays high when accuracy falls</li>
+          <li><strong>Confident Mistakes</strong> — cases where the model is wrong but still highly confident</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <p class="label">What we are testing</p>
+        <h2>Externally verifiable domains</h2>
+        <ul class="domain-list">
+          <li><strong>Mathematics</strong> — arithmetic, algebra, derivatives, probability, number theory, combinatorics</li>
+          <li><strong>Bioinformatics</strong> — DNA-to-amino-acid translation</li>
+          <li><strong>Cryptography</strong> — hashing and exact transformations</li>
+          <li><strong>Graph Theory</strong> — shortest paths and relational structure</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="takeaway">
+      <p class="label">Ground Truth Battery — takeaway</p>
+      <h2>Known truth turns reliability into a visible question.</h2>
+      <div class="takeaway-grid">
+        <div class="takeaway-box">
+          <h3>What happened</h3>
+          <p>Models can be tested on tasks where the answer is already known or can be verified externally.</p>
+        </div>
+        <div class="takeaway-box">
+          <h3>What it means</h3>
+          <p>The evaluation is not limited to surface quality. It becomes possible to compare correctness and confidence against truth.</p>
+        </div>
+        <div class="takeaway-box">
+          <h3>Why it matters</h3>
+          <p>If a model is confidently wrong on known truths, its confidence becomes even less trustworthy where truth is harder to verify.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

@@ -41,8 +41,7 @@
     }
 
     .hero,
-    .panel,
-    .takeaway {
+    .panel {
       background: var(--card);
       border: 2px solid var(--line);
       box-shadow: 10px 10px 0 var(--shadow);
@@ -120,8 +119,7 @@
       padding: 34px 38px 34px;
     }
 
-    .panel h2,
-    .takeaway h2 {
+    .panel h2 {
       margin: 0 0 24px;
       font-size: clamp(28px, 3vw, 52px);
       line-height: 1.05;
@@ -129,8 +127,7 @@
       font-weight: 600;
     }
 
-    .panel .label,
-    .takeaway .label {
+    .panel .label {
       display: inline-block;
       margin-bottom: 22px;
       font-size: 15px;
@@ -147,15 +144,13 @@
       font-weight: 700;
     }
 
-    .panel p,
-    .takeaway p {
+    .panel p {
       margin: 0 0 16px;
       font-size: clamp(22px, 1.8vw, 30px);
       line-height: 1.42;
     }
 
-    .panel p:last-child,
-    .takeaway p:last-child {
+    .panel p:last-child {
       margin-bottom: 0;
     }
 
@@ -210,7 +205,6 @@
       font-weight: 700;
     }
 
-    .domain-list,
     .metric-list,
     .mini-list {
       list-style: none;
@@ -218,7 +212,6 @@
       margin: 0;
     }
 
-    .domain-list li,
     .metric-list li,
     .mini-list li {
       font-size: clamp(20px, 1.5vw, 27px);
@@ -226,56 +219,31 @@
       border-bottom: 1px solid var(--soft-line);
     }
 
-    .domain-list li:last-child,
     .metric-list li:last-child,
     .mini-list li:last-child {
       border-bottom: 0;
       padding-bottom: 0;
     }
 
-    .domain-list strong,
     .metric-list strong,
     .mini-list strong {
       font-weight: 700;
-    }
-
-    .takeaway {
-      padding: 34px 38px;
-      margin-bottom: 48px;
-    }
-
-    .takeaway-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-      margin-top: 12px;
-    }
-
-    .takeaway-box {
-      border-top: 1px solid var(--soft-line);
-      padding-top: 18px;
-    }
-
-    .takeaway-box h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .takeaway-box p {
-      font-size: clamp(18px, 1.35vw, 24px);
-      margin: 0;
     }
 
     .module-anchor {
       scroll-margin-top: 40px;
     }
 
+    .right-card-sentence {
+      margin: 0;
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      font-weight: 600;
+    }
+
     @media (max-width: 1100px) {
-      .section-grid,
-      .takeaway-grid {
+      .section-grid {
         grid-template-columns: 1fr;
       }
 
@@ -283,8 +251,7 @@
         padding: 48px 28px 42px;
       }
 
-      .panel,
-      .takeaway {
+      .panel {
         padding: 28px 24px;
       }
 
@@ -295,6 +262,10 @@
 
       .contact-btn {
         padding: 14px 18px;
+      }
+
+      .right-card-sentence {
+        font-size: clamp(30px, 7vw, 48px);
       }
     }
   </style>
@@ -385,44 +356,18 @@
       <div class="panel">
         <p class="label module-tag">Module 1</p>
         <h2>Ground Truth Battery</h2>
-        <p>When different AIs give different answers, the first place to test them is where the answer is already known.</p>
-        <p><strong>This module measures:</strong></p>
+        <p>Tests models against questions with known answers.</p>
         <ul class="metric-list">
-          <li><strong>Accuracy %</strong> — how often the model gets the known answer right</li>
-          <li><strong>Avg Confidence</strong> — how sure the model is when answering</li>
-          <li><strong>Overconfidence Score</strong> — whether confidence stays high when accuracy falls</li>
-          <li><strong>Confident Mistakes</strong> — cases where the model is wrong but still highly confident</li>
+          <li><strong>Accuracy %</strong> — How often the answer is right</li>
+          <li><strong>Avg Confidence</strong> — How sure the model is</li>
+          <li><strong>Overconfidence</strong> — Confidence without accuracy</li>
+          <li><strong>Confident Mistakes</strong> — Wrong answers with high confidence</li>
         </ul>
       </div>
 
       <div class="panel">
-        <p class="label">What we are testing</p>
-        <h2>Externally verifiable domains</h2>
-        <ul class="domain-list">
-          <li><strong>Mathematics</strong> — arithmetic, algebra, derivatives, probability, number theory, combinatorics</li>
-          <li><strong>Bioinformatics</strong> — DNA-to-amino-acid translation</li>
-          <li><strong>Cryptography</strong> — hashing and exact transformations</li>
-          <li><strong>Graph Theory</strong> — shortest paths and relational structure</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="takeaway">
-      <p class="label">Ground Truth Battery — takeaway</p>
-      <h2>Known truth turns reliability into a visible question.</h2>
-      <div class="takeaway-grid">
-        <div class="takeaway-box">
-          <h3>What happened</h3>
-          <p>Models can be tested on tasks where the answer is already known or can be verified externally.</p>
-        </div>
-        <div class="takeaway-box">
-          <h3>What it means</h3>
-          <p>The evaluation is not limited to surface quality. It becomes possible to compare correctness and confidence against truth.</p>
-        </div>
-        <div class="takeaway-box">
-          <h3>Why it matters</h3>
-          <p>If a model is confidently wrong on known truths, its confidence becomes even less trustworthy where truth is harder to verify.</p>
-        </div>
+        <p class="label">Why it matters</p>
+        <p class="right-card-sentence">If a model is confidently wrong when the truth is known, it is harder to trust on unknown ones.</p>
       </div>
     </section>
 
@@ -441,8 +386,7 @@
 
       <div class="panel">
         <p class="label">Why it matters</p>
-        <h2>One prompt can produce very different model behavior.</h2>
-        <p>Probe makes those differences visible in a live run before they disappear behind a final answer.</p>
+        <p class="right-card-sentence">One prompt can produce very different model behavior.</p>
       </div>
     </section>
 
@@ -485,6 +429,20 @@
           <li><strong>Resistance (MRI)</strong> — How strongly it resisted pressure</li>
           <li><strong>Break Turn</strong> — When it first gave way</li>
           <li><strong>Recovery</strong> — Whether it regained the boundary</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="logprobs" class="section-grid module-anchor">
+      <div class="panel">
+        <p class="label module-tag">Module 6</p>
+        <h2>Logprobs</h2>
+        <p>Measures how decisively a model generated its answer.</p>
+        <ul class="mini-list">
+          <li><strong>Chosen Prob</strong> — Average confidence in the selected token</li>
+          <li><strong>Separation</strong> — Gap between the chosen token and the closest alternative</li>
+          <li><strong>Ambiguity</strong> — How much competition existed at generation time</li>
+          <li><strong>Alerts</strong> — Hesitation, near-ties, and abrupt drops</li>
         </ul>
       </div>
     </section>

@@ -31,7 +31,7 @@
     }
 
     .wrap {
-      width: min(1680px, calc(100% - 32px));
+      width: min(1680px, calc(100% - 28px));
       margin: 22px auto 80px;
     }
 
@@ -43,7 +43,9 @@
       box-shadow: 10px 10px 0 var(--shadow);
     }
 
-    .hero { margin-bottom: 48px; }
+    .hero {
+      margin-bottom: 46px;
+    }
 
     .topbar {
       display: flex;
@@ -67,7 +69,9 @@
       background: transparent;
     }
 
-    .hero-inner { padding: 70px 48px 58px; }
+    .hero-inner {
+      padding: 70px 48px 58px;
+    }
 
     .eyebrow {
       font-size: 16px;
@@ -96,9 +100,10 @@
 
     .section-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr);
-      gap: 26px;
-      margin-bottom: 42px;
+      /* Changed to 1fr 1fr for perfect symmetry */
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 34px;
       align-items: stretch;
     }
 
@@ -208,48 +213,32 @@
     }
 
     .metric-list strong,
-    .mini-list strong { font-weight: 700; }
+    .mini-list strong {
+      font-weight: 700;
+    }
 
-    .module-anchor { scroll-margin-top: 40px; }
+    .module-anchor {
+      scroll-margin-top: 40px;
+    }
 
     .insight-card {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      /* Aligned to the top to match the left card */
+      justify-content: flex-start; 
       min-height: 100%;
-      padding-top: 36px;
-      padding-bottom: 36px;
+      padding-top: 34px;
+      padding-bottom: 34px;
     }
 
     .right-card-sentence {
       margin: 0;
-      font-size: clamp(30px, 3.2vw, 52px);
+      font-size: clamp(30px, 3.15vw, 52px);
       line-height: 1.10;
       letter-spacing: -0.03em;
       font-weight: 600;
-      max-width: 14ch;
-    }
-
-    .finding-block {
-      margin-top: 26px;
-      padding-top: 18px;
-      border-top: 1px solid var(--soft-line);
-    }
-
-    .finding-label {
-      display: block;
-      margin-bottom: 10px;
-      font-size: 15px;
-      letter-spacing: 0.20em;
-      text-transform: uppercase;
-    }
-
-    .finding-text {
-      margin: 0;
-      font-size: clamp(22px, 1.85vw, 31px);
-      line-height: 1.32;
-      font-weight: 600;
-      max-width: 24ch;
+      /* Removed the max-width restriction so it flows naturally */
+      max-width: none; 
     }
 
     .closing-panel {
@@ -301,15 +290,13 @@
       line-height: 1.35;
     }
 
-    @media (max-width: 1280px) {
+    /* Lowered stacking breakpoint from 1280px to 900px so standard laptops stay side-by-side */
+    @media (max-width: 900px) {
       .section-grid {
         grid-template-columns: 1fr;
         gap: 18px;
       }
-
       .insight-card { min-height: auto; }
-      .right-card-sentence,
-      .finding-text { max-width: none; }
     }
 
     @media (max-width: 1100px) {
@@ -317,14 +304,13 @@
       .panel { padding: 28px 24px; }
       .topbar { padding: 18px 24px; gap: 16px; }
       .contact-btn { padding: 14px 18px; }
-      .right-card-sentence { font-size: clamp(30px, 7vw, 48px); }
-      .finding-text { font-size: clamp(22px, 5vw, 30px); }
+      .right-card-sentence { font-size: clamp(30px, 6vw, 48px); }
       .closing-panel { padding: 42px 24px 38px; }
       .closing-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 680px) {
-      .wrap { width: min(1680px, calc(100% - 20px)); }
+      .wrap { width: min(1680px, calc(100% - 18px)); }
       .closing-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -358,7 +344,7 @@
       </div>
 
       <div class="panel insight-card">
-        <p class="label">Why this matters</p>
+        <p class="label">WHY IT MATTERS</p>
         <p class="right-card-sentence">Most evaluation methods can see the output, but not whether the system is actually reliable.</p>
       </div>
     </section>
@@ -412,7 +398,7 @@
 
     <section id="ground-truth" class="section-grid module-anchor">
       <div class="panel">
-        <p class="label module-tag">Module 1</p>
+        <p class="label module-tag">MODULE 1</p>
         <h2>Ground Truth Battery</h2>
         <p>Tests models against questions with known answers.</p>
         <ul class="metric-list">
@@ -424,18 +410,14 @@
       </div>
 
       <div class="panel insight-card">
-        <p class="label">Why it matters</p>
+        <p class="label">WHY IT MATTERS</p>
         <p class="right-card-sentence">If a model is confidently wrong when the truth is known, it is harder to trust on unknown ones.</p>
-        <div class="finding-block">
-          <span class="finding-label">What we found</span>
-          <p class="finding-text">Models were often wrong on basic math while remaining highly confident.</p>
-        </div>
       </div>
     </section>
 
     <section id="probe" class="section-grid module-anchor">
       <div class="panel">
-        <p class="label module-tag">Module 2</p>
+        <p class="label module-tag">MODULE 2</p>
         <h2>Probe</h2>
         <p>Live multi-model testing.</p>
         <ul class="mini-list">
@@ -447,18 +429,14 @@
       </div>
 
       <div class="panel insight-card">
-        <p class="label">Why it matters</p>
+        <p class="label">WHY IT MATTERS</p>
         <p class="right-card-sentence">Seeing all model answers side by side makes hidden differences immediately visible.</p>
-        <div class="finding-block">
-          <span class="finding-label">What we found</span>
-          <p class="finding-text">The same prompt produced noticeably different answers and tone across models.</p>
-        </div>
       </div>
     </section>
 
     <section id="reasoning" class="section-grid module-anchor">
       <div class="panel">
-        <p class="label module-tag">Module 3</p>
+        <p class="label module-tag">MODULE 3</p>
         <h2>Reasoning</h2>
         <p>Analyzes the structure of a model’s reasoning.</p>
         <ul class="mini-list">
@@ -471,18 +449,14 @@
       </div>
 
       <div class="panel insight-card">
-        <p class="label">Why it matters</p>
+        <p class="label">WHY IT MATTERS</p>
         <p class="right-card-sentence">A good answer can hide weak reasoning.</p>
-        <div class="finding-block">
-          <span class="finding-label">What we found</span>
-          <p class="finding-text">The answer sounded confident, but the reasoning underneath it was fragmented and unsupported.</p>
-        </div>
       </div>
     </section>
 
     <section id="reflection" class="section-grid module-anchor">
       <div class="panel">
-        <p class="label module-tag">Module 4</p>
+        <p class="label module-tag">MODULE 4</p>
         <h2>Reflection</h2>
         <p>Evaluates what changed after reflection.</p>
         <ul class="mini-list">
@@ -494,18 +468,14 @@
       </div>
 
       <div class="panel insight-card">
-        <p class="label">Why it matters</p>
+        <p class="label">WHY IT MATTERS</p>
         <p class="right-card-sentence">A revised answer is not necessarily a better answer.</p>
-        <div class="finding-block">
-          <span class="finding-label">What we found</span>
-          <p class="finding-text">Reflection changed the answer a lot, but added no new evidence.</p>
-        </div>
       </div>
     </section>
 
     <section id="elasticity" class="section-grid module-anchor">
       <div class="panel">
-        <p class="label module-tag">Module 5</p>
+        <p class="label module-tag">MODULE 5</p>
         <h2>Elasticity</h2>
         <p>Pressure-tests whether a model keeps its boundary across several turns.</p>
         <ul class="mini-list">
@@ -517,18 +487,14 @@
       </div>
 
       <div class="panel insight-card">
-        <p class="label">Why it matters</p>
+        <p class="label">WHY IT MATTERS</p>
         <p class="right-card-sentence">A model may look safe at first, yet still fail when the pressure continues.</p>
-        <div class="finding-block">
-          <span class="finding-label">What we found</span>
-          <p class="finding-text">Sustained pressure revealed which models held their boundary, which gave way, and which recovered.</p>
-        </div>
       </div>
     </section>
 
     <section id="logprobs" class="section-grid module-anchor">
       <div class="panel">
-        <p class="label module-tag">Module 6</p>
+        <p class="label module-tag">MODULE 6</p>
         <h2>Logprobs</h2>
         <p>Measures how decisively a model generated its answer.</p>
         <ul class="mini-list">
@@ -540,12 +506,8 @@
       </div>
 
       <div class="panel insight-card">
-        <p class="label">Why it matters</p>
+        <p class="label">WHY IT MATTERS</p>
         <p class="right-card-sentence">A clear answer can still hide hesitation during generation.</p>
-        <div class="finding-block">
-          <span class="finding-label">What we found</span>
-          <p class="finding-text">The final answer looked clear, but the path to it was full of hesitation and near-ties.</p>
-        </div>
       </div>
     </section>
 

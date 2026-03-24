@@ -100,7 +100,6 @@
 
     .section-grid {
       display: grid;
-      /* Changed to 1fr 1fr for perfect symmetry */
       grid-template-columns: 1fr 1fr;
       gap: 24px;
       margin-bottom: 34px;
@@ -224,7 +223,6 @@
     .insight-card {
       display: flex;
       flex-direction: column;
-      /* Aligned to the top to match the left card */
       justify-content: flex-start; 
       min-height: 100%;
       padding-top: 34px;
@@ -237,8 +235,29 @@
       line-height: 1.10;
       letter-spacing: -0.03em;
       font-weight: 600;
-      /* Removed the max-width restriction so it flows naturally */
       max-width: none; 
+    }
+
+    .finding-block {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--soft-line);
+    }
+
+    .finding-label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 15px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+    }
+
+    .finding-text {
+      margin: 0;
+      font-size: clamp(22px, 1.85vw, 31px);
+      line-height: 1.32;
+      font-weight: 600;
+      max-width: none; /* Removed so it spans the new wider column */
     }
 
     .closing-panel {
@@ -290,7 +309,6 @@
       line-height: 1.35;
     }
 
-    /* Lowered stacking breakpoint from 1280px to 900px so standard laptops stay side-by-side */
     @media (max-width: 900px) {
       .section-grid {
         grid-template-columns: 1fr;
@@ -305,6 +323,7 @@
       .topbar { padding: 18px 24px; gap: 16px; }
       .contact-btn { padding: 14px 18px; }
       .right-card-sentence { font-size: clamp(30px, 6vw, 48px); }
+      .finding-text { font-size: clamp(22px, 5vw, 30px); }
       .closing-panel { padding: 42px 24px 38px; }
       .closing-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -412,6 +431,10 @@
       <div class="panel insight-card">
         <p class="label">WHY IT MATTERS</p>
         <p class="right-card-sentence">If a model is confidently wrong when the truth is known, it is harder to trust on unknown ones.</p>
+        <div class="finding-block">
+          <span class="finding-label">What we found</span>
+          <p class="finding-text">Models were often wrong on basic math while remaining highly confident.</p>
+        </div>
       </div>
     </section>
 
@@ -431,6 +454,10 @@
       <div class="panel insight-card">
         <p class="label">WHY IT MATTERS</p>
         <p class="right-card-sentence">Seeing all model answers side by side makes hidden differences immediately visible.</p>
+        <div class="finding-block">
+          <span class="finding-label">What we found</span>
+          <p class="finding-text">The same prompt produced noticeably different answers and tone across models.</p>
+        </div>
       </div>
     </section>
 
@@ -451,6 +478,10 @@
       <div class="panel insight-card">
         <p class="label">WHY IT MATTERS</p>
         <p class="right-card-sentence">A good answer can hide weak reasoning.</p>
+        <div class="finding-block">
+          <span class="finding-label">What we found</span>
+          <p class="finding-text">The answer sounded confident, but the reasoning underneath it was fragmented and unsupported.</p>
+        </div>
       </div>
     </section>
 
@@ -470,6 +501,10 @@
       <div class="panel insight-card">
         <p class="label">WHY IT MATTERS</p>
         <p class="right-card-sentence">A revised answer is not necessarily a better answer.</p>
+        <div class="finding-block">
+          <span class="finding-label">What we found</span>
+          <p class="finding-text">Reflection changed the answer a lot, but added no new evidence.</p>
+        </div>
       </div>
     </section>
 
@@ -489,6 +524,10 @@
       <div class="panel insight-card">
         <p class="label">WHY IT MATTERS</p>
         <p class="right-card-sentence">A model may look safe at first, yet still fail when the pressure continues.</p>
+        <div class="finding-block">
+          <span class="finding-label">What we found</span>
+          <p class="finding-text">Sustained pressure revealed which models held their boundary, which gave way, and which recovered.</p>
+        </div>
       </div>
     </section>
 
@@ -508,6 +547,10 @@
       <div class="panel insight-card">
         <p class="label">WHY IT MATTERS</p>
         <p class="right-card-sentence">A clear answer can still hide hesitation during generation.</p>
+        <div class="finding-block">
+          <span class="finding-label">What we found</span>
+          <p class="finding-text">The final answer looked clear, but the path to it was full of hesitation and near-ties.</p>
+        </div>
       </div>
     </section>
 

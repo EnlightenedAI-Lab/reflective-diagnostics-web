@@ -3,220 +3,266 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module 7 & Diagnostics Summary</title>
+<title>Reflective Diagnostics Modules</title>
 <style>
+    /* Global Styles */
     body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        background-color: #f8fafc;
-        color: #0f172a;
-        padding: 2rem;
+        background-color: #f6f6f2; /* Light beige/off-white background from the image */
+        color: #111;
+        padding: 3rem 1rem;
+        margin: 0;
     }
 
-    .module-container {
-        max-width: 1000px;
-        margin: 0 auto 2rem auto;
-        background: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        overflow: hidden;
-        border: 1px solid #e2e8f0;
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
     }
 
-    .module-header {
-        background: #1e293b;
-        color: #ffffff;
-        padding: 2rem;
+    /* Top Comparison Table */
+    .comparison-section {
+        border: 3px solid #222;
+        box-shadow: 6px 6px 0px #222;
+        background-color: #f6f6f2;
+        margin-bottom: 3rem;
+        padding: 1rem 0;
     }
 
-    .module-number {
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+    .table-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        padding: 1.5rem 2rem;
+        align-items: center;
+        font-size: 1rem;
+    }
+
+    .table-row.highlight {
+        background-color: #eaf0e8; /* Light green background for Reflective Diagnostics */
         font-weight: 600;
-        color: #94a3b8;
-        display: block;
-        margin-bottom: 0.5rem;
     }
 
-    .module-title {
-        margin: 0 0 1rem 0;
-        font-size: 2rem;
+    .table-legend {
+        padding: 1rem 2rem 0.5rem 2rem;
+        font-size: 0.85rem;
+        color: #555;
+        border-top: 1px solid #ddd;
+        margin-top: 1rem;
+    }
+
+    .table-legend span {
+        margin-right: 1.5rem;
+    }
+
+    .check-icon {
+        font-weight: bold;
+    }
+
+    /* Module Grid Layout */
+    .module-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+        .module-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Heavy Border Cards */
+    .card {
+        background-color: #f6f6f2;
+        border: 3px solid #222;
+        box-shadow: 6px 6px 0px #222;
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Module Badge */
+    .module-badge {
+        display: inline-block;
+        color: #2563eb;
+        background-color: #eff6ff;
+        border: 1px solid #bfdbfe;
+        font-size: 0.75rem;
         font-weight: 700;
-        color: #f8fafc;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        margin-bottom: 1.5rem;
+        align-self: flex-start;
+    }
+
+    /* Typography */
+    .module-title {
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 0 0 1rem 0;
+        letter-spacing: -0.02em;
     }
 
     .module-desc {
-        margin: 0;
-        font-size: 1.125rem;
-        line-height: 1.6;
-        color: #cbd5e1;
-        max-width: 800px;
-    }
-
-    .module-body {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 2rem;
-        gap: 3rem;
-    }
-
-    .module-left {
-        flex: 1 1 400px;
-        background: #f1f5f9;
-        border-radius: 8px;
-        padding: 1.75rem;
-        border: 1px solid #e2e8f0;
-        box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-    }
-
-    .feature-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .feature-list li {
-        margin-bottom: 1.5rem;
-        line-height: 1.5;
-        font-size: 1rem;
-        color: #334155;
-    }
-
-    .feature-list li:last-child {
-        margin-bottom: 0;
-    }
-
-    .feature-list strong {
-        color: #0f172a;
-        display: block;
-        font-size: 1.15rem;
-        margin-bottom: 0.25rem;
-    }
-
-    .module-right {
-        flex: 1 1 300px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 2rem;
-    }
-
-    .insight-block h3, .insight-block .insight-label {
-        margin: 0 0 0.75rem 0;
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-weight: 600;
-        color: #64748b;
-        display: block;
-    }
-
-    .insight-block p {
-        margin: 0;
-        line-height: 1.6;
-        color: #0f172a;
-        font-size: 1.15rem;
-    }
-
-    /* Summary Block Specific Styles */
-    .summary-left {
-        background: #f8fafc;
-        border-left: 6px solid #1e293b;
-        border-radius: 0 8px 8px 0;
-    }
-
-    .summary-heading {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: #0f172a;
-        margin: 0 0 1rem 0;
-        line-height: 1.3;
-    }
-
-    .summary-subheading {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: #0f172a;
-        margin: 0 0 1.5rem 0;
-        line-height: 1.4;
-    }
-
-    .summary-text {
-        color: #475569;
         font-size: 1.1rem;
-        border-top: 1px solid #cbd5e1;
-        padding-top: 1.25rem;
+        color: #333;
+        margin: 0 0 2rem 0;
+        line-height: 1.5;
+    }
+
+    /* Feature List */
+    .feature-item {
+        font-size: 0.95rem;
+        color: #222;
+        padding: 1.25rem 0;
+        border-bottom: 1px solid #e5e5e5;
+        margin: 0;
+    }
+
+    .feature-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .feature-item strong {
+        font-weight: 700;
+        color: #000;
+    }
+
+    /* Right Column Insights */
+    .insight-section {
+        margin-bottom: 2.5rem;
+    }
+
+    .insight-section:last-child {
+        margin-bottom: 0;
+        padding-top: 2.5rem;
+        border-top: 1px solid #e5e5e5;
+    }
+
+    .insight-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #666;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .insight-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #111;
+        margin: 0;
     }
 </style>
 </head>
 <body>
 
-<div class="module-container">
-    <div class="module-header">
-        <span class="module-number">Module 7</span>
-        <h2 class="module-title">Absolute Intelligence</h2>
-        <p class="module-desc">Runs several frontier models on the same question, scores them, shows them peer feedback, and synthesizes a stronger final answer.</p>
-    </div>
-    
-    <div class="module-body">
-        <div class="module-left">
-            <ul class="feature-list">
-                <li>
-                    <strong>Multi-Model</strong>
-                    Several models answer the same prompt
-                </li>
-                <li>
-                    <strong>Judge</strong>
-                    A structured scorecard evaluates each answer
-                </li>
-                <li>
-                    <strong>Revision</strong>
-                    Peer feedback is shown back to the models
-                </li>
-                <li>
-                    <strong>Synthesis</strong>
-                    A stronger final answer is built from the best parts
-                </li>
-            </ul>
-        </div>
+<div class="container">
 
-        <div class="module-right">
-            <div class="insight-block">
-                <span class="insight-label">Why it matters</span>
-                <p>A difficult question should not depend on a single model’s first answer.</p>
-            </div>
-            <div class="insight-block">
-                <span class="insight-label">What we found</span>
-                <p>Scoring, peer feedback, and revision produced a stronger final answer than any one model alone.</p>
-            </div>
+    <div class="comparison-section">
+        <div class="table-row">
+            <div>Judge-based scoring</div>
+            <div class="check-icon">✓</div>
+            <div>~</div>
+            <div>~</div>
+        </div>
+        <div class="table-row highlight">
+            <div>Reflective Diagnostics</div>
+            <div class="check-icon">✓</div>
+            <div class="check-icon">✓</div>
+            <div class="check-icon">✓</div>
+        </div>
+        <div class="table-legend">
+            <span>✓ clear visibility</span>
+            <span>~ partial visibility</span>
+            <span>× not visible</span>
         </div>
     </div>
-</div>
 
-<div class="module-container">
-    <div class="module-body" style="padding: 0;">
-        <div style="display: flex; flex-wrap: wrap; width: 100%;">
+    <div class="module-grid">
+        <div class="card">
+            <span class="module-badge">Module 1</span>
+            <h2 class="module-title">Ground Truth Battery</h2>
+            <p class="module-desc">Tests models against questions with known answers.</p>
             
-            <div class="module-left summary-left" style="flex: 1 1 50%; padding: 3rem; border: none; border-left: 6px solid #1e293b; border-radius: 0;">
-                <span class="module-number" style="margin-bottom: 1.5rem;">Methodological Contrast</span>
-                <h2 class="summary-heading">Most systems evaluate AI through interpretation.</h2>
-                <h3 class="summary-subheading">Reflective Diagnostics evaluates it through explicit, repeatable rules.</h3>
-                <p class="summary-text">It does not use AI to judge AI. It uses structured rules to make hidden reliability signals visible.</p>
+            <div>
+                <p class="feature-item"><strong>Accuracy %</strong> — How often the answer is right</p>
+                <p class="feature-item"><strong>Avg Confidence</strong> — How sure the model is</p>
+                <p class="feature-item"><strong>Overconfidence</strong> — Confidence without accuracy</p>
+                <p class="feature-item"><strong>Confident Mistakes</strong> — Wrong answers with high confidence</p>
             </div>
-
-            <div class="module-right" style="flex: 1 1 40%; padding: 3rem; background: #ffffff;">
-                <div class="insight-block" style="margin-bottom: 2.5rem;">
-                    <span class="insight-label">Why it matters</span>
-                    <p>Most evaluation methods can see the output, but not whether the system is actually reliable.</p>
-                </div>
-                <div class="insight-block">
-                    <span class="insight-label">What we found</span>
-                    <p>Across these modules, the final answer repeatedly hid risks that only structured evaluation made visible.</p>
-                </div>
+        </div>
+        
+        <div class="card">
+            <div class="insight-section">
+                <span class="insight-label">Why it matters</span>
+                <p class="insight-text">If a model is confidently wrong when the truth is known, it is harder to trust on unknown ones.</p>
             </div>
-
+            <div class="insight-section">
+                <span class="insight-label">What we found</span>
+                <p class="insight-text">Models were often wrong on basic math while remaining highly confident.</p>
+            </div>
         </div>
     </div>
+
+    <div class="module-grid">
+        <div class="card">
+            <span class="module-badge">Module 2</span>
+            <h2 class="module-title">Probe</h2>
+            <p class="module-desc">Live multi-model testing.</p>
+            
+            <div>
+                <p class="feature-item"><strong>Parallel</strong> — Several models</p>
+                <p class="feature-item"><strong>Controlled</strong> — Same prompt</p>
+                <p class="feature-item"><strong>Evidence</strong> — Assigned run ID</p>
+                <p class="feature-item"><strong>Export</strong> — JSON record</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="insight-section">
+                <span class="insight-label">Why it matters</span>
+                <p class="insight-text">Seeing all model answers side by side makes hidden differences immediately visible.</p>
+            </div>
+            <div class="insight-section">
+                <span class="insight-label">What we found</span>
+                <p class="insight-text">The same prompt produced noticeably different answers and tone across models.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="module-grid">
+        <div class="card">
+            <span class="module-badge">Module 3</span>
+            <h2 class="module-title">Reasoning</h2>
+            <p class="module-desc">Analyzes the structure of a model's reasoning.</p>
+            
+            <div>
+                <p class="feature-item"><strong>Integrity</strong> — How well the reasoning holds together</p>
+                <p class="feature-item"><strong>Coverage</strong> — How much of the answer is supported</p>
+                <p class="feature-item"><strong>Orphans</strong> — Claims with no support</p>
+                <p class="feature-item"><strong>Stability</strong> — Consistency across reruns</p>
+                <p class="feature-item"><strong>Density</strong> — Amount of structural linkage</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="insight-section">
+                <span class="insight-label">Why it matters</span>
+                <p class="insight-text">A good answer can hide weak reasoning.</p>
+            </div>
+            <div class="insight-section">
+                <span class="insight-label">What we found</span>
+                <p class="insight-text">The answer sounded confident, but the reasoning underneath it was fragmented and unsupported.</p>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 </body>

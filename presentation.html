@@ -15,6 +15,7 @@
       --shadow: #000000;
       --module-blue: #0a84ff;
       --module-blue-soft: #eaf3ff;
+      --accent-soft: #e8efe9;
     }
 
     * { box-sizing: border-box; }
@@ -170,6 +171,7 @@
     .matrix th { font-weight: 700; }
 
     .matrix tr.rd-row td {
+      background: var(--accent-soft);
       font-weight: 700;
     }
 
@@ -285,6 +287,7 @@
     .closing-item {
       border-top: 1px solid var(--soft-line);
       padding-top: 18px;
+      text-align: left;
     }
 
     .closing-item strong {
@@ -299,6 +302,7 @@
       display: block;
       font-size: 20px;
       line-height: 1.35;
+      color: var(--muted);
     }
 
     @media (max-width: 1080px) {
@@ -365,33 +369,57 @@
       </div>
     </section>
 
-    <section id="absolute-intelligence" class="section-grid module-anchor">
-      <div class="panel">
-        <p class="label module-tag">Module 1</p>
-        <h2>Absolute Intelligence</h2>
-        <p>Runs several frontier models on the same question, scores them, shows them peer feedback, and synthesizes a stronger final answer.</p>
-        <ul class="mini-list">
-          <li><strong>Multi-Model</strong> — Several models answer the same question</li>
-          <li><strong>Judge</strong> — A dedicated scoring layer evaluates answer quality</li>
-          <li><strong>Revision</strong> — Models see peer packets and rethink their answer</li>
-          <li><strong>Synthesis</strong> — The final output keeps the strongest claims and caveats</li>
-        </ul>
-      </div>
-
-      <div class="panel insight-card">
-        <p class="label">Why it matters</p>
-        <p class="right-card-sentence">A difficult question should not depend on a single model’s first answer.</p>
-        <div class="finding-block">
-          <span class="finding-label">What we found</span>
-          <p class="finding-text">Scoring, peer feedback, and revision produced a stronger final answer than any one model alone.</p>
-        </div>
-      </div>
+    <section class="panel" style="margin-bottom: 48px;">
+      <p class="label">What organizations use today</p>
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Approach</th>
+            <th>Output</th>
+            <th>Correctness</th>
+            <th>Reliability</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Provider benchmarks</td>
+            <td class="symbol-yes">✓</td>
+            <td>~</td>
+            <td>×</td>
+          </tr>
+          <tr>
+            <td>Prompt comparison</td>
+            <td class="symbol-yes">✓</td>
+            <td>~</td>
+            <td>×</td>
+          </tr>
+          <tr>
+            <td>Human review</td>
+            <td class="symbol-yes">✓</td>
+            <td>~</td>
+            <td>~</td>
+          </tr>
+          <tr>
+            <td>Judge-based scoring</td>
+            <td class="symbol-yes">✓</td>
+            <td>~</td>
+            <td>~</td>
+          </tr>
+          <tr class="rd-row">
+            <td>Reflective Diagnostics</td>
+            <td class="symbol-yes">✓</td>
+            <td class="symbol-yes">✓</td>
+            <td class="symbol-yes">✓</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="legend">✓ clear visibility &nbsp;&nbsp; ~ partial visibility &nbsp;&nbsp; × not visible</div>
     </section>
 
     <section id="ground-truth" class="section-grid module-anchor">
       <div class="panel">
-        <p class="label module-tag">Module 2</p>
-        <h2>Ground Truth Battery</h2>
+        <p class="label module-tag">Module 1</p>
+        <h2>Ground Truth</h2>
         <p>Tests models against questions with known answers.</p>
         <ul class="metric-list">
           <li><strong>Accuracy %</strong> — How often the answer is right</li>
@@ -413,7 +441,7 @@
 
     <section id="probe" class="section-grid module-anchor">
       <div class="panel">
-        <p class="label module-tag">Module 3</p>
+        <p class="label module-tag">Module 2</p>
         <h2>Probe</h2>
         <p>Live multi-model testing.</p>
         <ul class="mini-list">
@@ -436,7 +464,7 @@
 
     <section id="reasoning" class="section-grid module-anchor">
       <div class="panel">
-        <p class="label module-tag">Module 4</p>
+        <p class="label module-tag">Module 3</p>
         <h2>Reasoning</h2>
         <p>Analyzes the structure of a model’s reasoning.</p>
         <ul class="mini-list">
@@ -460,7 +488,7 @@
 
     <section id="reflection" class="section-grid module-anchor">
       <div class="panel">
-        <p class="label module-tag">Module 5</p>
+        <p class="label module-tag">Module 4</p>
         <h2>Reflection</h2>
         <p>Evaluates what changed after reflection.</p>
         <ul class="mini-list">
@@ -483,7 +511,7 @@
 
     <section id="elasticity" class="section-grid module-anchor">
       <div class="panel">
-        <p class="label module-tag">Module 6</p>
+        <p class="label module-tag">Module 5</p>
         <h2>Elasticity</h2>
         <p>Pressure-tests whether a model keeps its boundary across several turns.</p>
         <ul class="mini-list">
@@ -506,7 +534,7 @@
 
     <section id="logprobs" class="section-grid module-anchor">
       <div class="panel">
-        <p class="label module-tag">Module 7</p>
+        <p class="label module-tag">Module 6</p>
         <h2>Logprobs</h2>
         <p>Measures how decisively a model generated its answer.</p>
         <ul class="mini-list">
@@ -523,6 +551,29 @@
         <div class="finding-block">
           <span class="finding-label">What we found</span>
           <p class="finding-text">The final answer looked clear, but the path to it was full of hesitation and near-ties.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="absolute-intelligence" class="section-grid module-anchor">
+      <div class="panel">
+        <p class="label module-tag">Module 7</p>
+        <h2>Absolute Intelligence</h2>
+        <p>Runs several frontier models on the same question, scores them, shows them peer feedback, and synthesizes a stronger final answer.</p>
+        <ul class="mini-list">
+          <li><strong>Multi-Model</strong> — Several models answer the same question</li>
+          <li><strong>Judge</strong> — A dedicated scoring layer evaluates answer quality</li>
+          <li><strong>Revision</strong> — Models see peer packets and rethink their answer</li>
+          <li><strong>Synthesis</strong> — The final output keeps the strongest claims and caveats</li>
+        </ul>
+      </div>
+
+      <div class="panel insight-card">
+        <p class="label">Why it matters</p>
+        <p class="right-card-sentence">A difficult question should not depend on a single model’s first answer.</p>
+        <div class="finding-block">
+          <span class="finding-label">What we found</span>
+          <p class="finding-text">Scoring, peer feedback, and revision produced a stronger final answer than any one model alone.</p>
         </div>
       </div>
     </section>
